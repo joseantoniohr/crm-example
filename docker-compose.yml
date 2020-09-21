@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+    crm_example:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        environment:
+            - DJANGO_SETTINGS_MODULE=crm_example.settings_local
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - ./:/code
+        ports:
+            - '8000:8000'
+            - '3000:3000'
+            - '8888:8888'
+        container_name: crm_example
